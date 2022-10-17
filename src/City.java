@@ -6,13 +6,12 @@ public class City
 {   
     private int width;
     private int height;
-	// private LinkedList<Object> items;
-    private List<Object> items;
+	private LinkedList<Object> items;
 
     public City(int width, int height)
     {   this.width = width;
         this.height = height;
-        items = new LinkedList<Object>(); 
+        items = new LinkedList<Object>(); // oi sabrina :)
 
         if(width < 1) {
             throw new IllegalArgumentException(

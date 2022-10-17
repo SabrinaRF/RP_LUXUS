@@ -1,6 +1,6 @@
-import java.util.HashMap;
+//import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Map;
+//import java.util.Map;
 import java.awt.*;
 import javax.swing.*;
     
@@ -18,7 +18,7 @@ public class CityGUI extends JFrame implements Actor
         this.city = city;
         cityView = new CityView(city.getWidth(), city.getHeight());
         getContentPane().add(cityView);
-        setTitle("LUXUS");
+        setTitle("Taxiville");
         setSize(CITY_VIEW_WIDTH, CITY_VIEW_HEIGHT);
         setVisible(true);
         cityView.preparePaint();

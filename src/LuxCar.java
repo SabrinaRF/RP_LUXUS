@@ -4,21 +4,22 @@ import javax.swing.ImageIcon;
 
 public class LuxCar implements DrawableItem{
     private Passenger passenger;
-    //private LuxCompany company;
-    //private Location location;
-    //private LuxCar notifyPassengerArrival;
-    //private LuxCar car;
-    //private boolean free;
+    private LuxCompany company;
+    private Location location;
+    private LuxCar notifyPassengerArrival;
+    private LuxCar car;
+    private boolean free;
     private Image emptyImage, passengerImage;
     
 
     public LuxCar(LuxCompany company, Location location){
-       //super(company, location);
-        //this.company = company;
-        //this.location = location;
-        emptyImage = new ImageIcon(getClass().getResource("image/luxCar.jpg")).getImage();
 
-        passengerImage = new ImageIcon(getClass().getResource("image/luxCar+person.jpg")).getImage();
+       this.company = company;
+       this.location = location;
+
+        emptyImage = new ImageIcon(getClass().getResource("images/car.jpg")).getImage();
+
+        passengerImage = new ImageIcon(getClass().getResource("images/drive.jpg")).getImage();
     
     }
     
@@ -102,10 +103,10 @@ public class LuxCar implements DrawableItem{
     }
     public String toString()
     {
-        return "luxCar at " + getLocation ();
+        return "luxCar at " + getLocation () + " of Company "+ this.company.getLocalName();
     }
     public Location getLocation(){
-        return null;
+        return this.location;
     }
   
     public void interator(){

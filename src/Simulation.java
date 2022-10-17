@@ -1,4 +1,5 @@
 //import java.util.Iterator;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -12,20 +13,19 @@ public class Simulation
     public Simulation(Location location, int width, int height)
     {
         this.actors = new LinkedList<Actor>();
-        this.step = 0;
+        this.vehicles = new LinkedList<Vehicle>();
+        this.step = 10;
         this.city = new City(width,height);
-
 
         CityGUI cityGui = new CityGUI(city);
         cityGui.act();
-  
-        LuxCompany company = new LuxCompany(city);
-        PassengerSource source = new PassengerSource(city, company);
-              
-        LuxCar luxCar = new LuxCar(company,location);
-        luxCar.act();
 
+        LuxCompany company = new LuxCompany(city);
+
+        PassengerSource source = new PassengerSource(city, company);
+        
         vehicles.addAll(company.getVehicles(company, location));
+
         actors.add(source);
         actors.add(new CityGUI(city));
     }
@@ -33,7 +33,7 @@ public class Simulation
 
     public void run()
     {
-        for(int i = 0; i > 500; i--){
+        for(int i = 0; i < 500; i++){
             step++;
             step();
             wait(100);

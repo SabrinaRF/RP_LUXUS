@@ -1,26 +1,24 @@
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.LinkedList;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 
 public class LuxCompany 
 {
-   
+   private  String localName;
     private List<Vehicle> vehicles;
     private City city;
     private Map<Vehicle, Passenger> assignments;
+
     private LuxCompany company;
     private List<LuxCar> cars;
 
-    public static final int TOTAL_LUXCARS = 0;
+    public static final int TOTAL_LUXCARS = 5;
 
 
     public LuxCompany(City city)
     {
+        this.setLocalName("TESTE");
         this.city = city;
         vehicles = new LinkedList<Vehicle>();
+        cars = new LinkedList<LuxCar>();
         assignments = new HashMap<Vehicle, Passenger>();
         setupVehicles();
     }
@@ -58,6 +56,7 @@ public class LuxCompany
 
     public List<Vehicle> getVehicles(LuxCompany company, Location location)
     {
+
         return vehicles;
     }
     
@@ -74,21 +73,31 @@ public class LuxCompany
         return null;
     }
 
+    public  void test(){
+        System.out.println(this.getLocalName());
+    }
 
-    private void setupVehicles()
+    public void setupVehicles()
     {
         int cityWidth = city.getWidth();
         int cityHeight = city.getHeight();
-
         Random rand = new Random(12345);
-
         // Create the taxis.
-        for(int i = 0; i < vehicles.size(); i++){
-            LuxCar luxcar = new LuxCar(this.company,new Location(rand.nextInt(cityWidth),rand.nextInt(cityHeight)));
-            //não sei se é exatamente isso>>>> criado uma lista de carros cars
-            cars.add(luxcar);
-            city.addItem(luxcar);
+        for(int i = 0; i < LuxCompany.TOTAL_LUXCARS; i++){
+//
+            LuxCar luxcar = new LuxCar(this,new Location(rand.nextInt(cityWidth),rand.nextInt(cityHeight)));
+//            //não sei se é exatamente isso>>>> criado uma lista de carros cars
+            this.cars.add(luxcar);
+            this.city.addItem(luxcar);
+//
         }
-    
    }
+
+    public String getLocalName() {
+        return localName;
+    }
+
+    public void setLocalName(String localName) {
+        this.localName = localName;
+    }
 }

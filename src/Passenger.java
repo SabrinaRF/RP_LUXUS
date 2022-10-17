@@ -20,7 +20,7 @@ public class Passenger implements DrawableItem
         this.pickup = pickup;
         this.destination = destination;
         
-        image = new ImageIcon(getClass().getResource("images/person.jpg")).getImage();
+        image = new ImageIcon(getClass().getResource("images/user.jpg")).getImage();
     }
     
     
