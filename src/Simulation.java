@@ -1,5 +1,4 @@
 //import java.util.Iterator;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -8,24 +7,19 @@ public class Simulation
     private List<Actor> actors;
     protected int step;
     private City city;
-    private List<Vehicle> vehicles;
 
-    public Simulation(Location location, int width, int height)
+    public Simulation(int width, int height)
     {
         this.actors = new LinkedList<Actor>();
-        this.vehicles = new LinkedList<Vehicle>();
         this.step = 10;
         this.city = new City(width,height);
 
-        CityGUI cityGui = new CityGUI(city);
-        cityGui.act();
 
         LuxCompany company = new LuxCompany(city);
 
         PassengerSource source = new PassengerSource(city, company);
-        
-        vehicles.addAll(company.getVehicles(company, location));
 
+        actors.addAll(0,company.getVehicles());
         actors.add(source);
         actors.add(new CityGUI(city));
     }
@@ -57,7 +51,7 @@ public class Simulation
         } 
         catch (InterruptedException e)
         {
-            
+            System.err.println("Sleep is disturbed. " + e);
         }
     }
 }
