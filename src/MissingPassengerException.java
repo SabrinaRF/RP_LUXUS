@@ -7,5 +7,4 @@ public class MissingPassengerException extends RuntimeException
     {
         super("Missing passenger at pickup location.");
     }
-
 }

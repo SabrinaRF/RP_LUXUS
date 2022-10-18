@@ -5,8 +5,8 @@ public class Shuttle extends Vehicle
 {
     private List<Location> destinations;
     private List<Passenger> passengers;
-    protected Location location;
-    protected LuxCompany company;
+    private Location location;
+    private LuxCompany company;
 
     public Shuttle(LuxCompany company, Location location){
         super(company, location);

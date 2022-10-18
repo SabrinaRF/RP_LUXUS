@@ -7,11 +7,13 @@ public class City
     private int width;
     private int height;
 	private LinkedList<Object> items;
+    public static final int DEFAULT_WIDTH=0;
+    public static final int DEFAULT_HEIGHT=0; 
 
     public City(int width, int height)
     {   this.width = width;
         this.height = height;
-        items = new LinkedList<Object>(); // oi sabrina :)
+        this.items = new LinkedList<Object>();
 
         if(width < 1) {
             throw new IllegalArgumentException(
@@ -24,11 +26,10 @@ public class City
                         height);
         }
     }
-    
-    //Troquei DEFAULT_WIDTH e DEFAULT_HEIGHT, para zero
+
     public City()
     {
-        this(0, 0);
+        this(DEFAULT_WIDTH, DEFAULT_HEIGHT);
     } 
     
 

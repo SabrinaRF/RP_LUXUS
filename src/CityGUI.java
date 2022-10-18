@@ -16,7 +16,7 @@ public class CityGUI extends JFrame implements Actor
     public CityGUI(City city)
     {
         this.city = city;
-        cityView = new CityView(city.getWidth(), city.getHeight());
+        this.cityView = new CityView(city.getWidth(), city.getHeight());
         getContentPane().add(cityView);
         setTitle("Taxiville");
         setSize(CITY_VIEW_WIDTH, CITY_VIEW_HEIGHT);

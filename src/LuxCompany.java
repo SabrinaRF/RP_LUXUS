@@ -2,7 +2,7 @@ import java.util.*;
 
 public class LuxCompany 
 {
-   private  String localName;
+    private  String localName;
     private List<Vehicle> vehicles;
     private City city;
     private Map<Vehicle, Passenger> assignments;
@@ -15,12 +15,11 @@ public class LuxCompany
 
     public LuxCompany(City city)
     {
-        this.setLocalName("TESTE");
         this.city = city;
         vehicles = new LinkedList<Vehicle>();
         cars = new LinkedList<LuxCar>();
         assignments = new HashMap<Vehicle, Passenger>();
-        setupVehicles();
+        this.setupVehicles();
     }
 
 
@@ -71,10 +70,6 @@ public class LuxCompany
             }
         }
         return null;
-    }
-
-    public  void test(){
-        System.out.println(this.getLocalName());
     }
 
     public void setupVehicles()
