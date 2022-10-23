@@ -77,11 +77,11 @@ public class LuxCompany
         int cityWidth = city.getWidth();
         int cityHeight = city.getHeight();
         Random rand = new Random(12345);
-        // Create the taxis.
+        //.
         for(int i = 0; i < LuxCompany.TOTAL_LUXCARS; i++){
 //
             LuxCar luxcar = new LuxCar(this,new Location(rand.nextInt(cityWidth),rand.nextInt(cityHeight)));
-//            //não sei se é exatamente isso>>>> criado uma lista de carros cars
+            // cria luxcar da classe "LuxCar", intância "LuxCar"(this=company, intância "Location"(cria coordenadas aleatórias dentro do tamanho da city))
             this.cars.add(luxcar);
             this.city.addItem(luxcar);
 //
