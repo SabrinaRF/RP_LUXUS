@@ -14,11 +14,6 @@ public class Shuttle extends Vehicle
         passengers = new LinkedList<Passenger>();
     }
            
-           /* public Passagers() 
-            }   
-            passengers = new LinkedList<Passenger>();
-          
-          {*/
     
     public void companyLocation(Location location, LuxCompany company){
         this.company = company;
@@ -42,8 +37,17 @@ public class Shuttle extends Vehicle
 
     }
 
-
+    public void act(){}; 
+    
     public void offloadPassenger(){
 
     }
+
+
+    @Override
+    public boolean isFree() {
+        // TODO Auto-generated method stub
+        return true;
+    }
+
 }
