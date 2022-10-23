@@ -1,25 +1,20 @@
 import java.util.*;
 
-public class LuxCompany 
-{
-    private  String localName;
+public class LuxCompany {
+
     private List<Vehicle> vehicles;
     private City city;
     private Map<Vehicle, Passenger> assignments;
 
-    private LuxCompany company;
-    private List<LuxCar> cars;
-
-    public static final int TOTAL_LUXCARS = 5;
+    private static final int TOTAL_LUXCARS = 7;
 
 
     public LuxCompany(City city)
     {
         this.city = city;
         vehicles = new LinkedList<Vehicle>();
-        cars = new LinkedList<LuxCar>();
         assignments = new HashMap<Vehicle, Passenger>();
-        this.setupVehicles();
+        setupVehicles();
     }
 
 
@@ -53,11 +48,7 @@ public class LuxCompany
     }
     
 
-    public List<Vehicle> getVehicles(LuxCompany company, Location location)
-    {
-
-        return vehicles;
-    }
+    public List<Vehicle> getVehicles(){return vehicles;}
     
 
     private Vehicle scheduleVehicle()
@@ -72,27 +63,21 @@ public class LuxCompany
         return null;
     }
 
+
     public void setupVehicles()
     {
         int cityWidth = city.getWidth();
         int cityHeight = city.getHeight();
         Random rand = new Random(12345);
-        //.
-        for(int i = 0; i < LuxCompany.TOTAL_LUXCARS; i++){
-//
+        // Create the taxis.
+        for(int i = 0; i < TOTAL_LUXCARS; i++){
+
             LuxCar luxcar = new LuxCar(this,new Location(rand.nextInt(cityWidth),rand.nextInt(cityHeight)));
             // cria luxcar da classe "LuxCar", intância "LuxCar"(this=company, intância "Location"(cria coordenadas aleatórias dentro do tamanho da city))
-            this.cars.add(luxcar);
-            this.city.addItem(luxcar);
-//
+
+            vehicles.add(luxcar);
+            city.addItem(luxcar);
+
         }
    }
-
-    public String getLocalName() {
-        return localName;
-    }
-
-    public void setLocalName(String localName) {
-        this.localName = localName;
-    }
 }

@@ -1,7 +1,5 @@
 
 public abstract class Vehicle implements Actor {
-    
-
     private LuxCompany company;
     private Location location;
 
@@ -65,8 +63,8 @@ public abstract class Vehicle implements Actor {
 				throw new NullPointerException();
 			}
 		}
-
-    
+		
+	
 }
 
     

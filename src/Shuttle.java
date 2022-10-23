@@ -5,8 +5,8 @@ public class Shuttle extends Vehicle
 {
     private List<Location> destinations;
     private List<Passenger> passengers;
-    private Location location;
-    private LuxCompany company;
+    protected Location location;
+    protected LuxCompany company;
 
     public Shuttle(LuxCompany company, Location location){
         super(company, location);
@@ -49,5 +49,7 @@ public class Shuttle extends Vehicle
         // TODO Auto-generated method stub
         return true;
     }
+
+
 
 }

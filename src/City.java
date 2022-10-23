@@ -6,15 +6,10 @@ public class City
 {   
     private int width;
     private int height;
-	private LinkedList<Object> items;
-    public static final int DEFAULT_WIDTH=0;
-    public static final int DEFAULT_HEIGHT=0; 
+	private List<Object> items;
 
     public City(int width, int height)
-    {   this.width = width;
-        this.height = height;
-        this.items = new LinkedList<Object>();
-
+    { 
         if(width < 1) {
             throw new IllegalArgumentException(
                         "Width must be positive: " +
@@ -25,11 +20,16 @@ public class City
                         "Height must be positive: " +
                         height);
         }
-    }
 
+        this.width = width;
+        this.height = height;
+        items = new LinkedList<Object>(); 
+    }
+    
+    //Troquei DEFAULT_WIDTH e DEFAULT_HEIGHT, para zero
     public City()
     {
-        this(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+        this(30, 30);
     } 
     
 

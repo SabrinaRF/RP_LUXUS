@@ -1,10 +1,13 @@
 
 public class MissingPassengerException extends RuntimeException
 {
-    protected Vehicle vehicle;
+    private Vehicle vehicle;
 
     public MissingPassengerException(Vehicle vehicle)
     {
         super("Missing passenger at pickup location.");
     }
+
+    public Vehicle getVehicle(){return vehicle;}
+
 }

@@ -11,10 +11,10 @@ public class Passenger implements DrawableItem
     
     public Passenger(Location pickup, Location destination)
     {
-        if(pickup.getX() == 0.0 && pickup.getY() == 0.0) {
+        if(pickup == null) {
             throw new NullPointerException("Pickup location");
         }
-        if(destination.getX() == 0.0 && destination.getY() == 0.0) {
+        if(destination == null) {
             throw new NullPointerException("Destination location");
         }
         this.pickup = pickup;
@@ -23,28 +23,6 @@ public class Passenger implements DrawableItem
         image = new ImageIcon(getClass().getResource("images/user.jpg")).getImage();
     }
     
-    
-    public void act(){
-        
-    }
-    public void notifyPassengerArrival(){
-
-    }
-    public void incrementIdleCount (){
-        
-    }
-    public void clearTargetLocation(){
-        
-    }
-    public void interator(){
-
-    }
-    public void addItem(){
-
-    }
-    public void removeItem(){
-
-    }
 
     public String toString()
     {

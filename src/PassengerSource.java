@@ -31,7 +31,7 @@ public class PassengerSource implements Actor
 
     public void act()
     {
-        if(rand.nextDouble() < CREATION_PROBABILITY) {
+        if(rand.nextDouble() <= CREATION_PROBABILITY) {
             Passenger passenger = createPassenger();
             if(company.requestPickup(passenger)) {
                 city.addItem(passenger);
@@ -50,10 +50,14 @@ public class PassengerSource implements Actor
         int cityWidth = city.getWidth();
         int cityHeight = city.getHeight();
 
-        Location pickupLocation = new Location(rand.nextInt(cityWidth), rand.nextInt(cityHeight));
+        Location pickupLocation =
+                    new Location(rand.nextInt(cityWidth),
+                                 rand.nextInt(cityHeight));
         Location destination;
         do{
-            destination = new Location(rand.nextInt(cityWidth),rand.nextInt(cityHeight));
+            destination =
+                    new Location(rand.nextInt(cityWidth),
+                                 rand.nextInt(cityHeight));
         } while(pickupLocation.equals(destination));
         return new Passenger(pickupLocation, destination);
     }
