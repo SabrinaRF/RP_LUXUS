@@ -28,11 +28,11 @@ public abstract class Vehicle implements Actor {
 		
 		company.arrivedAtDestination(this, passengers);
 	}
+
 	public void notifyPassengerArrivalBus(List<Passenger> passengers) {
 		
 		company.arrivedAtDestinationBus(this, passengers);
 	}
-
 
 
     public void setLocation(Location location) {

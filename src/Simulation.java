@@ -3,7 +3,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Simulation
-{
+{ 
     private List<Actor> actors;
     protected int step;
     private City city;

@@ -4,7 +4,7 @@ import javax.swing.ImageIcon;
 
 public class LuxCar extends Vehicle implements DrawableItem{
     private Passenger passenger;
-    private LuxCar car;
+    //private LuxCar car;
     private Image emptyImage, passengerImage;
     
 
