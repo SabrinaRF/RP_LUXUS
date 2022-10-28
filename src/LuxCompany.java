@@ -1,18 +1,23 @@
 import java.util.*;
 
-public class LuxCompany {
-
+public class LuxCompany 
+{
+   private  String localName;
     private List<Vehicle> vehicles;
     private City city;
     private Map<Vehicle, Passenger> assignments;
 
-    private static final int TOTAL_LUXCARS = 7;
+    private LuxCompany company;
+    private List<LuxCar> cars;
 
+    public static final int TOTAL_LUXCARS = 5;
+    private static final int TOTAL_SHUTTLE = 5;
 
     public LuxCompany(City city)
     {
         this.city = city;
         vehicles = new LinkedList<Vehicle>();
+        cars = new LinkedList<LuxCar>();
         assignments = new HashMap<Vehicle, Passenger>();
         setupVehicles();
     }
@@ -46,12 +51,19 @@ public class LuxCompany {
     public void arrivedAtDestination(Vehicle vehicle,Passenger passenger){
 
     }
+    public void arrivedAtDestinationBus(Vehicle vehicle,List<Passenger> passenger){
+
+    }
     
 
-    public List<Vehicle> getVehicles(){return vehicles;}
+    public List<Vehicle> getVehicles()
+    {
+
+        return vehicles;
+    }
     
 
-    private Vehicle scheduleVehicle()
+    public Vehicle scheduleVehicle()
     {
         Iterator<Vehicle> it = vehicles.iterator();
         while(it.hasNext()) {
@@ -62,22 +74,28 @@ public class LuxCompany {
         }
         return null;
     }
-
-
     public void setupVehicles()
     {
         int cityWidth = city.getWidth();
         int cityHeight = city.getHeight();
         Random rand = new Random(12345);
         // Create the taxis.
-        for(int i = 0; i < TOTAL_LUXCARS; i++){
-
+        for(int i = 0; i < LuxCompany.TOTAL_LUXCARS; i++){
+//
             LuxCar luxcar = new LuxCar(this,new Location(rand.nextInt(cityWidth),rand.nextInt(cityHeight)));
-            // cria luxcar da classe "LuxCar", intância "LuxCar"(this=company, intância "Location"(cria coordenadas aleatórias dentro do tamanho da city))
+//            //não sei se é exatamente isso>>>> criado uma lista de carros cars
+            this.cars.add(luxcar);
+            this.city.addItem(luxcar);
+//
+        }
+        for(int i = 0; i < TOTAL_SHUTTLE; i++){
 
-            vehicles.add(luxcar);
-            city.addItem(luxcar);
+            Shuttle luxbus = new Shuttle(this,new Location(rand.nextInt(cityWidth),rand.nextInt(cityHeight)));
+
+            vehicles.add(luxbus);
+            city.addItem(luxbus);
 
         }
    }
+
 }

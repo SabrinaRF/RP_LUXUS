@@ -1,3 +1,4 @@
+import java.util.List;
 
 public abstract class Vehicle implements Actor {
     private LuxCompany company;
@@ -23,9 +24,13 @@ public abstract class Vehicle implements Actor {
 		company.arrivedAtPickup(this);
 	}
 
-    public void notifyPassengerArrival(Passenger passenger) {
+    public void notifyPassengerArrival(Passenger passengers) {
 		
-		company.arrivedAtDestination(this, passenger);
+		company.arrivedAtDestination(this, passengers);
+	}
+	public void notifyPassengerArrivalBus(List<Passenger> passengers) {
+		
+		company.arrivedAtDestinationBus(this, passengers);
 	}
 
 
