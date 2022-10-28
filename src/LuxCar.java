@@ -12,7 +12,7 @@ public class LuxCar extends Vehicle implements DrawableItem{
         super(company,location);
 
 
-        emptyImage = new ImageIcon(getClass().getResource("images/car.jpg")).getImage();
+        emptyImage = new ImageIcon(getClass().getResource("images/car.png")).getImage();
 
         passengerImage = new ImageIcon(getClass().getResource("images/driver.jpg")).getImage();
     

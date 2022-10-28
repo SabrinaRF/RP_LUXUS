@@ -7,7 +7,7 @@ public class LuxCompany {
     private Map<Vehicle, Passenger> assignments;
 
     private static final int TOTAL_LUXCARS = 7;
-
+    private static final int TOTAL_SHUTTLE = 5;
 
     public LuxCompany(City city)
     {
@@ -46,6 +46,9 @@ public class LuxCompany {
     public void arrivedAtDestination(Vehicle vehicle,Passenger passenger){
 
     }
+    public void arrivedAtDestinationBus(Vehicle vehicle,List<Passenger> passenger){
+
+    }
     
 
     public List<Vehicle> getVehicles(){return vehicles;}
@@ -76,6 +79,14 @@ public class LuxCompany {
 
             vehicles.add(luxcar);
             city.addItem(luxcar);
+
+        }
+        for(int i = 0; i < TOTAL_SHUTTLE; i++){
+
+            Shuttle luxbus = new Shuttle(this,new Location(rand.nextInt(cityWidth),rand.nextInt(cityHeight)));
+
+            vehicles.add(luxbus);
+            city.addItem(luxbus);
 
         }
    }
