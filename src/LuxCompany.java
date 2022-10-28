@@ -54,7 +54,7 @@ public class LuxCompany {
     public List<Vehicle> getVehicles(){return vehicles;}
     
 
-    private Vehicle scheduleVehicle()
+    public Vehicle scheduleVehicle()
     {
         Iterator<Vehicle> it = vehicles.iterator();
         while(it.hasNext()) {
