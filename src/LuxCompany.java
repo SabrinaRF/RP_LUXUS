@@ -1,23 +1,18 @@
 import java.util.*;
 
-public class LuxCompany 
-{
-   private  String localName;
+public class LuxCompany {
+
     private List<Vehicle> vehicles;
     private City city;
     private Map<Vehicle, Passenger> assignments;
 
-    private LuxCompany company;
-    private List<LuxCar> cars;
-
-    public static final int TOTAL_LUXCARS = 5;
+    private static final int TOTAL_LUXCARS = 7;
     private static final int TOTAL_SHUTTLE = 5;
 
     public LuxCompany(City city)
     {
         this.city = city;
         vehicles = new LinkedList<Vehicle>();
-        cars = new LinkedList<LuxCar>();
         assignments = new HashMap<Vehicle, Passenger>();
         setupVehicles();
     }
@@ -56,11 +51,7 @@ public class LuxCompany
     }
     
 
-    public List<Vehicle> getVehicles()
-    {
-
-        return vehicles;
-    }
+    public List<Vehicle> getVehicles(){return vehicles;}
     
 
     public Vehicle scheduleVehicle()
@@ -74,19 +65,21 @@ public class LuxCompany
         }
         return null;
     }
+
+
     public void setupVehicles()
     {
         int cityWidth = city.getWidth();
         int cityHeight = city.getHeight();
         Random rand = new Random(12345);
         // Create the taxis.
-        for(int i = 0; i < LuxCompany.TOTAL_LUXCARS; i++){
-//
+        for(int i = 0; i < TOTAL_LUXCARS; i++){
+
             LuxCar luxcar = new LuxCar(this,new Location(rand.nextInt(cityWidth),rand.nextInt(cityHeight)));
-//            //não sei se é exatamente isso>>>> criado uma lista de carros cars
-            this.cars.add(luxcar);
-            this.city.addItem(luxcar);
-//
+
+            vehicles.add(luxcar);
+            city.addItem(luxcar);
+
         }
         for(int i = 0; i < TOTAL_SHUTTLE; i++){
 
@@ -97,5 +90,4 @@ public class LuxCompany
 
         }
    }
-
 }
