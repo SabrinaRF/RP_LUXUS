@@ -8,7 +8,7 @@ public class PassengerSource implements Actor {
     private City city;
     private LuxCompany company;
     private Random rand;
-    private static final double CREATION_PROBABILITY = 2.00;
+    private static final double CREATION_PROBABILITY = 0.50;
     private int missedPickups;
 
     public PassengerSource(City city, LuxCompany company) {
