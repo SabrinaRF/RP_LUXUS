@@ -5,8 +5,8 @@ import javax.swing.ImageIcon;
     
 public class Shuttle extends Vehicle implements DrawableItem
 {
-    private List<Location> destinations;
-    private List<Passenger> passengers =new LinkedList<Passenger>();
+    private LinkedList<Location> destinations= new LinkedList<Location>();
+    private LinkedList<Passenger> passengers =new LinkedList<Passenger>();
     private Location location;
     private LuxCompany company;
    // private Shuttle bus;//criando o bus
@@ -28,8 +28,8 @@ public class Shuttle extends Vehicle implements DrawableItem
             setLocation(next);
             if(next.equals(target)) {
                 for (int i = 0; i < passengers.size(); i++) {
-                    if(passengers != null) {
-                            notifyPassengerArrivalBus(passengers); //notificar a chegada do passageiro
+                    if(passengers.get(i) != null) {
+                            notifyPassengerArrival(passengers.get(i)); //notificar a chegada do passageiro
                             offloadPassenger();
                     }else {
                         notifyPickupArrival();
@@ -57,16 +57,18 @@ public class Shuttle extends Vehicle implements DrawableItem
     
 
     public void pickup(Passenger passenger){
-        passengers.add(passenger);
-        destinations.add(passenger.getDestination());
+        passengers.addLast(passenger);
+        //destinations.add(passenger.getDestination());
         setTargetLocation(passenger.getDestination());
         
     }
     
     public void offloadPassenger(){
+        
         passengers = null;
         clearTargetLocation();
-    }   
+    } 
+
     @Override
     public boolean isFree() {
         return getTargetLocation() == null && passengers == null;
@@ -76,15 +78,12 @@ public class Shuttle extends Vehicle implements DrawableItem
     @Override
     public Image getImage()
      { 
-          //for (int i = 0; i < passengers.size(); i++) {
             if(passengers != null) {
                 return passengerImage;
             }
             else {
                 return emptyImage;
-            }
-        //}
-        
+            }     
     }
 
 }

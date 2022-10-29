@@ -45,11 +45,7 @@ public class LuxCompany {
 
     public void arrivedAtDestination(Vehicle vehicle,Passenger passenger){
 
-    }
-    public void arrivedAtDestinationBus(Vehicle vehicle,List<Passenger> passenger){
-
-    }
-    
+    }  
 
     public List<Vehicle> getVehicles(){return vehicles;}
     
