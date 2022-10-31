@@ -1,53 +1,65 @@
 import java.util.List;
 import java.util.LinkedList;
-    
-public class Shuttle extends Vehicle
-{
-    private List<Location> destinations;
-    private List<Passenger> passengers;
-    private Location location;
-    private LuxCompany company;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 
-    public Shuttle(LuxCompany company, Location location){
+public class Shuttle extends Vehicle implements DrawableItem {
+    private List<Passenger> passenger;
+    private Shuttle bus;// criando o bus
+    private Image emptyImage, passengerImage;// as imagens
+
+    public Shuttle(LuxCompany company, Location location) {
         super(company, location);
-        destinations = new LinkedList<Location>();
-        passengers = new LinkedList<Passenger>();
+        emptyImage = new ImageIcon(getClass().getResource("images/bus.png")).getImage();
+        passengerImage = new ImageIcon(getClass().getResource("images/driverBus.png")).getImage();
     }
-           
-    
-    public void companyLocation(Location location, LuxCompany company){
-        this.company = company;
-        this.location = location;
+
+    public void act() {
+        Location target = getTargetLocation();
+        if (target != null) {
+            Location next = getLocation().nextLocation(target);
+            setLocation(next);
+            if (next.equals(target)) {
+                if (passenger != null) {
+                    notifyPassengerArrivalBus(passenger); // notificar a chegada do passageiro
+                    offloadPassenger();
+                } else {
+                    notifyPickupArrival();
+                }
+            }
+        } else {
+            incrementIdleCount();
         }
-
-    public void setPickupLocation(Location location){
-        destinations.add(location);
-        chooseTargetLocation();
-    }
-    
-
-    public void pickup(Passenger passenger){
-        passengers.add(passenger);
-        destinations.add(passenger.getDestination());
-        chooseTargetLocation();
     }
 
-
-    private void chooseTargetLocation(){
-
-    }
-
-    public void act(){}; 
-    
-    public void offloadPassenger(){
-
-    }
-
-
-    @Override
     public boolean isFree() {
-        // TODO Auto-generated method stub
-        return true;
+        return getTargetLocation() == null && passenger == null;
+    }
+
+    public void setPickupLocation(Location location) {
+        setTargetLocation(location);
+    }
+
+    public void pickup(Passenger passenger) {
+        this.passenger = new LinkedList<Passenger>();
+        setTargetLocation(passenger.getDestination());
+    }
+
+    public void offloadPassenger() {
+        passenger = null;
+        clearTargetLocation();
+    }
+
+    public Image getImage() {
+        if (passenger != null) {
+            return passengerImage;
+        } else {
+            return emptyImage;
+        }
+    }
+
+    public String toString() {
+        return "luxCar at " + getLocation();
     }
 
 }
