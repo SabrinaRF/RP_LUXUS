@@ -1,98 +1,85 @@
 import java.util.*;
 
-public class LuxCompany 
-{
-    private  String localName;
+public class LuxCompany {
+
     private List<Vehicle> vehicles;
     private City city;
     private Map<Vehicle, Passenger> assignments;
 
-    private LuxCompany company;
-    private List<LuxCar> cars;
+    private static final int TOTAL_LUXCARS = 2;
+    private static final int TOTAL_SHUTTLE = 1;
 
-    public static final int TOTAL_LUXCARS = 5;
-
-
-    public LuxCompany(City city)
-    {
+    public LuxCompany(City city) {
         this.city = city;
         vehicles = new LinkedList<Vehicle>();
-        cars = new LinkedList<LuxCar>();
         assignments = new HashMap<Vehicle, Passenger>();
-        this.setupVehicles();
+        setupVehicles();
     }
 
-
-    public boolean requestPickup(Passenger passenger)
-    {
+    public boolean requestPickup(Passenger passenger) {
         Vehicle vehicle = scheduleVehicle();
-        if(vehicle != null) {
+        if (vehicle != null) {
             assignments.put(vehicle, passenger);
             vehicle.setPickupLocation(passenger.getPickupLocation());
             return true;
-        }
-        else {
+        } else {
             return false;
         }
     }
-    
 
-    public void arrivedAtPickup(Vehicle vehicle){
-        
+    public void arrivedAtPickup(Vehicle vehicle) {
+
         Passenger passenger = assignments.remove(vehicle);
-        if(passenger == null) {
+        if (passenger == null) {
             throw new MissingPassengerException(vehicle);
         }
         city.removeItem(passenger);
         vehicle.pickup(passenger);
     }
-    
 
-    public void arrivedAtDestination(Vehicle vehicle,Passenger passenger){
+    public void arrivedAtDestination(Vehicle vehicle, Passenger passenger) {
 
     }
-    
 
-    public List<Vehicle> getVehicles(LuxCompany company, Location location)
-    {
+    public void arrivedAtDestinationBus(Vehicle vehicle, List<Passenger> passenger) {
 
+    }
+
+    public List<Vehicle> getVehicles() {
         return vehicles;
     }
-    
 
-    private Vehicle scheduleVehicle()
-    {
+    public Vehicle scheduleVehicle() {
         Iterator<Vehicle> it = vehicles.iterator();
-        while(it.hasNext()) {
+        while (it.hasNext()) {
             Vehicle vehicle = it.next();
-            if(vehicle.isFree()) {
+            if (vehicle.isFree()) {
                 return vehicle;
             }
         }
         return null;
     }
 
-    public void setupVehicles()
-    {
+    public void setupVehicles() {
         int cityWidth = city.getWidth();
         int cityHeight = city.getHeight();
         Random rand = new Random(12345);
-        //.
-        for(int i = 0; i < LuxCompany.TOTAL_LUXCARS; i++){
-//
-            LuxCar luxcar = new LuxCar(this,new Location(rand.nextInt(cityWidth),rand.nextInt(cityHeight)));
-            // cria luxcar da classe "LuxCar", intância "LuxCar"(this=company, intância "Location"(cria coordenadas aleatórias dentro do tamanho da city))
-            this.cars.add(luxcar);
-            this.city.addItem(luxcar);
-//
+        // Create the taxis.
+        for (int i = 0; i < TOTAL_LUXCARS; i++) {
+
+            LuxCar luxcar = new LuxCar(this, new Location(rand.nextInt(cityWidth), rand.nextInt(cityHeight)));
+
+            vehicles.add(luxcar);
+            city.addItem(luxcar);
+
         }
-   }
+        for (int i = 0; i < TOTAL_SHUTTLE; i++) {
 
-    public String getLocalName() {
-        return localName;
-    }
+            Shuttle luxbus = new Shuttle(this, new Location(rand.nextInt(cityWidth), rand.nextInt(cityHeight)));
 
-    public void setLocalName(String localName) {
-        this.localName = localName;
+            vehicles.add(luxbus);
+            city.addItem(luxbus);
+
+        }
     }
 }
