@@ -44,7 +44,11 @@ public class Shuttle extends Vehicle implements DrawableItem
         }
     }
 
-           
+    public void setPassengers(List<Passenger> passengers){
+        this.passengers = passengers;
+    }
+
+    public List<Passenger> getPassengers(){return passengers;}
     
     public void companyLocation(Location location, LuxCompany company){
         this.company = company;
@@ -62,10 +66,13 @@ public class Shuttle extends Vehicle implements DrawableItem
         destinations.add(passenger.getDestination());
         chooseTargetLocation();
     }
-
+    
+    public List<Location> getDestinations(){
+        return this.destinations;
+    }
 
     private void chooseTargetLocation(){
-
+        
     }
 
     

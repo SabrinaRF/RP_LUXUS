@@ -5,7 +5,6 @@ public class LuxCompany {
     private List<Vehicle> vehicles;
     private City city;
     private Map<Vehicle, Passenger> assignments;
-
     private static final int TOTAL_LUXCARS = 7;
     private static final int TOTAL_SHUTTLE = 5;
 
@@ -44,10 +43,10 @@ public class LuxCompany {
     
 
     public void arrivedAtDestination(Vehicle vehicle,Passenger passenger){
-
+        
     }
-    public void arrivedAtDestinationBus(Vehicle vehicle,List<Passenger> passenger){
-
+    public boolean arrivedAtDestinationBus(Vehicle vehicle,List<Passenger> passenger){
+        return true;
     }
     
 

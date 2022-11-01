@@ -36,6 +36,7 @@ public class Location
         return new Location(x,y);
     }
 
+
     
     public int distance(Location destination)
     {

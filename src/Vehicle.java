@@ -5,7 +5,7 @@ public abstract class Vehicle implements Actor {
     private Location location;
 
     private Location targetLocation;
-	private int idleCount;
+	private int idleCount = 0;
 
     public Vehicle(LuxCompany company, Location location){
         this.company = company;
