@@ -2,24 +2,19 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 
 
-public class LuxCar implements DrawableItem{
+public class LuxCar extends Vehicle implements DrawableItem{
     private Passenger passenger;
-    private LuxCompany company;
-    private Location location;
-    private LuxCar notifyPassengerArrival;
     private LuxCar car;
-    private boolean free;
     private Image emptyImage, passengerImage;
     
 
     public LuxCar(LuxCompany company, Location location){
+        super(company,location);
 
-       this.company = company;
-       this.location = location;
 
         emptyImage = new ImageIcon(getClass().getResource("images/car.jpg")).getImage();
 
-        passengerImage = new ImageIcon(getClass().getResource("images/drive.jpg")).getImage();
+        passengerImage = new ImageIcon(getClass().getResource("images/driver.jpg")).getImage();
     
     }
     
@@ -45,24 +40,6 @@ public class LuxCar implements DrawableItem{
         }
     }
 
-    public void notifyPassengerArrival(Passenger passenger2) {
-	}
-
-    public void incrementIdleCount() {
-
-	}
-
-    private  void notifyPickupArrival(){
-
-    }
-	private  void setLocation(Location next) {
-    }
-
-    private Location getTargetLocation() {
-        return null;
-    }
-
-
     public boolean isFree()
     {
         return getTargetLocation() == null && passenger == null;
@@ -86,12 +63,7 @@ public class LuxCar implements DrawableItem{
         passenger = null;
         clearTargetLocation();
     }
-    public void setTargetLocation(Location destination){
 
-    }
-    public void clearTargetLocation(){
-
-    }
     public Image getImage()
     {
         if(passenger != null) {
@@ -103,23 +75,8 @@ public class LuxCar implements DrawableItem{
     }
     public String toString()
     {
-        return "luxCar at " + getLocation () + " of Company "+ this.company.getLocalName();
+        return "luxCar at " + getLocation ();
     }
-    public Location getLocation(){
-        return this.location;
-    }
-  
-    public void interator(){
 
-    }
-    public void addItem(){
-
-    }
-    public void removeItem(){
-
-    }
-    public void notifyPassengerArrival(){
-
-    }
     
 }
